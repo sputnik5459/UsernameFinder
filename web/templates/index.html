@@ -1,13 +1,14 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <title>{{ .Title }}</title>
-    </head>
-    <body>
-        <form action="/process" method="post">
-            <p><input type="text" name="username_field"></p>
-            <p><input type="submit" value="search"></p>
-        </form>
-    </body>
+<html lang="en" dir="ltr">
+	<head>
+		<meta charset="utf-8">
+		<title>{{ .Title }}</title>
+	</head>
+	<body>
+		{{template "find_username_form"}}
+
+		{{if .Result}}
+		<p>{{ .Result }}</p>
+		{{end}}
+	</body>
 </html>

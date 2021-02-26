@@ -4,18 +4,23 @@ import (
   "fmt"
   "net/http"
   "html/template"
-
-  "github.com/sputnik5459/UsernameFinder/internal/engine"
+  "github.com/sputnik5459/username-finder/internal/engine"
 )
 
 type TemplateData struct {
   Title string
+  Result string
 }
 
 func index(w http.ResponseWriter, r *http.Request){
   p := TemplateData{Title: "Index"}
-  t, _ := template.ParseFiles("web/templates/index.html")
-  fmt.Println(t.Execute(w,p))
+
+  tmpls, _ := template.ParseFiles(
+    "web/templates/index.html",
+    "web/templates/find_username_form.html",
+  )
+
+  fmt.Println(tmpls.Execute(w,p))
 }
 
 func processor(w http.ResponseWriter, r *http.Request) {
